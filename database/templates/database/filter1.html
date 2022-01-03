@@ -1,0 +1,22 @@
+
+                           {% for tab in tab_products %}
+                                <div class="item item-thumbnail">
+                                {% if tab %}
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="{{tab.image.url}}" alt="" />
+                                        <div class="discount">{{tab.off}}% OFF</div>
+                                    </a>
+
+                                {% else %}
+                                    <h6>No  exist</h6>
+                                {% endif %}
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product_detail.html">{{tab.name}}<br />16GB</a>
+                                        </h4>
+                                        <p class="item-desc">{{tab.discription}}.</p>
+                                        <div class="item-price">${{tab.price}}</div>
+                                        <div class="item-discount-price">${{tab.discount}}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}

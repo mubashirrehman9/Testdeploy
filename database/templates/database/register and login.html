@@ -1,0 +1,70 @@
+{% extends 'database/base.html' %}
+{% load static %}
+        <!-- BEGIN #slider -->
+{% block body %}
+<link href="{% static 'assets/css/ecommerancestyle.css' %}" rel="stylesheet" />
+      <div class="account-page">
+      <div class="container">
+      <div class="row">
+      <div class="col-2">
+       <img src="image1.png">
+       </div>
+       <div class="col-2">
+       <div class="form-container">
+       <div class="form-btn">
+       <span onclick="login()">Login</span>
+       <span onclick="register()">Register</span>
+       <hr id="Indicator">
+       </div>
+        <form id="LoginForm">
+          <input type="text" placeholder="username">
+          <input type="password" placeholder="password">
+          <button class="btn">login</button>
+          <a href="">forget password</a>
+        </form>
+        <form id="RegForm" method="POST" >
+             {% csrf_token %}
+          <input type="text" placeholdr="name">
+           <input type="email" placeholder="email">
+          <input type="password" placeholder="password">
+          <button type="submit"class="btn">Submit</button>
+          
+        </form>
+       </div>
+        
+       </div>
+
+       </div>
+
+
+
+           </div>
+</div>
+
+<script>
+  var Loginform=document.getElementById("LoginForm");
+    var Regform=document.getElementById("RegForm");
+       var Indicator=document.getElementById("Indicator");
+
+     function register() {
+       RegForm.style.transform="translateX(0px)";
+       LoginForm.style.transform="translateX(0px)";
+        Indicator.style.transform="translateX(100px)";
+     }
+ function login() {
+  RegForm.style.transform="translateX(300px)";
+       LoginForm.style.transform="translateX(300px)";
+          Indicator.style.transform="translateX(0px)";
+     }
+
+
+
+
+
+
+
+</script>
+
+
+      {% endblock %}
+

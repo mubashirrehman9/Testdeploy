@@ -1,0 +1,44 @@
+{% extends 'database/base.html' %}
+{% load static %}
+        <!-- BEGIN #slider -->
+{% block body %}
+<div class="container">
+<div class="row">
+    <div class="content-section col-md-4 col-md-offset-4   ">
+
+
+<form method="POST" novalidate class="shadow p-3" style="
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin: 5%; border-radius:;">
+    <h3 class="text-center alert alert-info">LOGIN FORM</h3>
+             {% csrf_token %}
+      {% if messages %}
+
+    {% for message in messages %}
+         <p class="my-3 text-center alert alert-success">{{message}}</p>
+    {% endfor %}
+
+{% endif %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors  %}
+    <p class="my-3 text-center alert alert-danger">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+  {% for f in form %}
+
+<div class="form-group">
+    {{f.label_tag }}{{f}}<small class="text-danger"> {{f.errors|striptags}}</small><br>
+
+</div>
+
+  {% endfor %}
+     <input type="submit" value="Login" class="btn btn-success">
+
+
+
+
+        </h3>
+    </form>
+</div>
+</div>
+   </div>
+ {% endblock %}

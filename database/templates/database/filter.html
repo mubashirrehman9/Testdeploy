@@ -1,0 +1,23 @@
+
+                           {% for mobile in mobile_products %}
+                                <div class="item item-thumbnail">
+                                {% if mobile %}
+                                    <a href="product_detail.html" class="item-image">
+                                        <img src="{{mobile.image.url}}" alt="" />
+                                        <div class="discount">{{mobile.off}}% OFF</div>
+                                    </a>
+
+                                {% else %}
+                                    <h6>No  exist</h6>
+                                {% endif %}
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="product_detail.html">{{mobile.name}}<br />16GB</a>
+                                        </h4>
+                                        <p class="item-desc">{{mobile.discription}}.</p>
+                                        <div class="item-price">${{mobile.price}}</div>
+                                        <div class="item-discount-price">${{mobile.discount}}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+

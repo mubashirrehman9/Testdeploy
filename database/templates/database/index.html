@@ -1,0 +1,536 @@
+{% extends "database/base.html" %}
+{% load static %}
+ {% block body %}
+        <!-- BEGIN #slider -->
+
+
+      <!-- BEGIN #slider -->
+        <div id="slider" class="section-container p-0 bg-black-darker">
+            <!-- BEGIN carousel -->
+            <div id="main-carousel" class="carousel slide" data-ride="carousel">
+                <!-- BEGIN carousel-inner -->
+                <div class="carousel-inner">
+
+
+ {% for slider in is_slider %}
+                {% if forloop.counter == 1 %}
+                    <!-- BEGIN item -->
+                    <div class="item active">
+                        <img src="{{ slider.image.url }}" class="bg-cover-img" alt="" />
+
+                        <div class="container">
+                            <img src="{{ slider.image.url }}" class="product-img right bottom fadeInRight animated" alt="" />
+                        </div>
+                        <div class="carousel-caption carousel-caption-left">
+                            <div class="container">
+                                <h3 class="title m-b-5 fadeInLeftBig animated">{{ slider.name }}</h3>
+                                <p class="m-b-15 fadeInLeftBig animated">{{ slider.discription }}</p>
+                                <div class="price m-b-30 fadeInLeftBig animated"><small>from</small> <span>${{ slider.price }}</span></div>
+                                <a href="#" class="btn btn-outline btn-lg fadeInLeftBig animated">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END item -->
+<!--     {% endif %}-->
+{% endfor %}
+
+                    {% for slider in is_slider %}
+                        {% if forloop.counter != 1 %}
+                    <!-- BEGIN item -->
+                    <div class="item">
+                       <img src="{{ slider.image.url }}" class="bg-cover-img"  alt="" />
+
+                        <div class="container">
+                            <img src="{{ slider.image.url }}" class="product-img left bottom fadeInLeft animated" alt="" />
+
+                        </div>
+                        <div class="carousel-caption carousel-caption-right">
+                            <div class="container">
+                                <h3 class="title m-b-5 fadeInRightBig animated">{{ slider.name }}</h3>
+                                <p class="m-b-15 fadeInRightBig animated">{{ slider.discription }}</p>
+                                <div class="price m-b-30 fadeInRightBig animated"><small>from</small> <span>${{ slider.price }}</span></div>
+                                <a href="#" class="btn btn-outline btn-lg fadeInRightBig animated">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- END item -->
+                        {% endif %}
+                    {% endfor %}
+
+
+
+                    <!-- END item -->
+                </div>
+                <!-- END carousel-inner -->
+                <a class="left carousel-control" href="#main-carousel" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right carousel-control" href="#main-carousel" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <!-- END carousel -->
+        </div>
+        <!-- END #slider -->
+
+
+ <!-- BEGIN #promotions -->
+        <div id="promotions" class="section-container bg-white">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN section-title -->
+                <h4 class="section-title clearfix">
+                    <a href="#" class="pull-right">SHOW ALL</a>
+                    Exclusive promotions
+                    <small>from 25 September 2016 - 1 January 2017</small>
+                </h4>
+                <!-- END section-title -->
+                <!-- BEGIN row -->
+                <div class="row row-space-10">
+                    <!-- BEGIN col-6 -->
+                    <div class="col-md-6">
+
+                        <!-- BEGIN promotion -->
+                        <div class="promotion promotion-lg bg-black-darker">
+                            {% for promotion in is_promotion %}
+                                {% if forloop.counter == 1 %}
+                            <div class="promotion-image text-right promotion-image-overflow-bottom">
+                                <img src="{{ promotion.image.url }}" alt="" />
+                            </div>
+                            <div class="promotion-caption promotion-caption-inverse">
+                                <h4 class="promotion-title">{{ promotion.name }}</h4>
+                                <div class="promotion-price"><small>from</small> ${{ promotion.price }}</div>
+                                <p class="promotion-desc">A big step for small.<br />A beloved design. Now with more to love.</p>
+                                <a href="#" class="promotion-btn">View More</a>
+                            </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <!-- END promotion -->
+                    </div>
+                     END col-6
+                     BEGIN col-3
+                    <div class="col-md-6">
+                      <div class="row">
+                          {% for promotion in is_promotion %}
+                              {% if forloop.counter > 17 %}
+                          <div class="col-md-6 mb-3">
+
+                        <div class="promotion bg-blue m-b-5">
+
+                            <div class="promotion-image promotion-image-overflow-bottom promotion-image-overflow-top">
+                                <img src="{{ promotion.image.url }}" alt="" />
+                            </div>
+                            <div class="promotion-caption promotion-caption-inverse text-right">
+                                <h4 class="promotion-title">Apple Watch</h4>
+                                <div class="promotion-price"><small>from</small> ${{ promotion.price}}</div>
+                                <p class="promotion-desc">You. At a glance.</p>
+                                <a href="#" class="promotion-btn">View More</a>
+                            </div>
+
+                        </div>
+
+                          </div>
+                             {% endif %}
+                          {% endfor %}
+                      </div>
+
+                        <!-- END promotion -->
+                    </div>
+                    <!-- END col-3 -->
+                </div>
+                <!-- END row -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #promotions -->
+
+        <!-- BEGIN #trending-items -->
+        <div id="trending-items" class="section-container bg-silver">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN section-title -->
+                <h4 class="section-title clearfix">
+                    <a href="#" class="pull-right m-l-5"><i class="fa fa-angle-right f-s-18"></i></a>
+                    <a href="#" class="pull-right"><i class="fa fa-angle-left f-s-18"></i></a>
+                    Trending Items
+                    <small>Shop and get your favourite items at amazing prices!</small>
+                </h4>
+                <!-- END section-title -->
+
+                <!-- BEGIN row -->
+                <div class="row row-space-10">
+                    <!-- BEGIN col-2 -->
+                <div id="idsids">
+                    {% for product in products %}
+                    <div class="col-md-2 col-sm-4">
+                        <!-- BEGIN item -->
+
+                        <div class="item item-thumbnail">
+                            <a href="{% url 'product_detail' product.id %}" class="item-image">
+                                <img src="{{product.image.url}}" alt="" />
+                                <div class="discount">{{product.off}}% OFF</div>
+                            </a>
+                            <div class="item-info">
+                                <h4 class="item-title">
+                                    <a href="{% url 'product_detail' product.id %}">{{product.name}}<br />{{product.spacification}}</a>
+                                </h4>
+                                <p class="item-desc">{{product.discription}}.</p>
+                                <div class="item-price">${{product.price}}</div>
+                                <div class="item-discount-price">${{product.discount}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                        <!-- END item -->
+                <!-- END row -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #trending-items -->
+
+        <!-- BEGIN #mobile-list -->
+        <div id="mobile-list" class="section-container bg-silver p-t-0">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN section-title -->
+                <h4 class="section-title clearfix">
+                    <a href="#" class="pull-right" style="margin-top: 20px">SHOW ALL</a>
+                    <div>
+                    Mobile Phones
+                    <small>Shop and get your favourite phone at amazing prices!</small>
+                        </div>
+                </h4>
+                <!-- END section-title -->
+                <!-- BEGIN category-container -->
+                <div class="category-container">
+                    <!-- BEGIN category-sidebar -->
+                    <div class="category-sidebar">
+                        <ul class="category-list">
+                            <li class="list-header">Top Categories</li>
+
+                            {% for item in categories %}
+                            <li class="category_click" id="{{item.id}}" data-id="{{item.id}}"><a href="#">{{ item.name }}</a></li>
+                            {% endfor %}
+
+
+
+                            <script src="{% static 'js/app.js' %}"></script>
+
+
+                        </ul>
+
+                    </div>
+
+                    <!-- END category-sidebar -->
+                    <!-- BEGIN category-detail -->
+                        <div class="category-detail">
+                        <!-- BEGIN category-item -->
+                        <a href="#" class="category-item full">
+                            <div class="item">
+                                <div class="item-cover">
+                                    <img src="{% static 'assets/img/samsung-s7-edge.jpg' %}" alt="" />
+                                </div>
+                                <div class="item-info bottom">
+                                    <h4 class="item-title">Samsung Galaxy s7 Edge + Geat 360 + Gear VR</h4>
+                                    <p class="item-desc">Redefine what a phone can do</p>
+                                    <div class="item-price">$799.00</div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- END category-item -->
+                        <!-- BEGIN category-item -->
+                        <div class="category-item list">
+                            <!-- BEGIN item-row -->
+                            <div class="item-row">
+                                <!-- BEGIN item -->
+
+
+
+                            <div id = "ididid">
+                                {% for mobile in mobile_products %}
+                                <div class="item item-thumbnail">
+                                {% if mobile.image %}
+                                    <a href="{% url 'product_detail' mobile.id %}" class="item-image">
+                                        <img src="{{mobile.image.url}}" alt="" />
+                                        <div class="discount">{{mobile.off}}% OFF</div>
+                                    </a>
+                                {% else %}
+                                    <h6>image not exist</h6>
+                                {% endif %}
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="{% url 'product_detail' mobile.id %}">{{mobile.name}}<br />{{mobile.spacification}}</a>
+                                        </h4>
+                                        <p class="item-desc">{{mobile.discription}}.</p>
+                                        <div class="item-price">${{mobile.price}}</div>
+                                        <div class="item-discount-price">${{mobile.discount}}</div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+
+
+                                <!-- END item -->
+                            </div>
+                            <!-- END item-row -->
+                        </div>
+                        <!-- END category-item -->
+                    </div>
+                    <!-- END category-detail -->
+                </div>
+                <!-- END category-container -->
+            </div>
+            <!-- END container -->
+         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+                                    <script>
+
+                               $( ".category_click" ).on( "click", function(ev) {
+                                   ev.preventDefault();
+
+                                                  var id = $(this).attr("id");
+
+                                                  $.ajax({
+                                      type: "GET",
+                                      url: `getCategory/${id}/`,
+                                      data: {
+                                          id:id,
+
+                                      },
+                                      complete: function(data){
+                                         console.log(data.responseText);
+                                         {#console.log(data.innerHTML);#}
+                                         $('#ididid').html(data.responseText);
+                                      }
+                                    });
+                                });
+                            </script>
+        <!-- END #mobile-list -->
+        </div>
+        <!-- BEGIN #tablet-list -->
+        <div id="tablet-list" class="section-container bg-silver p-t-0">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN section-title -->
+                <h4 class="section-title d-flex justify-content-space-between ; align-item-center">
+
+                       <h4 class="section-title clearfix">
+                    <a href="#" class="pull-right" style="margin-top: 20px">SHOW ALL</a>
+                    Tablet
+                    <small>Shop and get your favourite phone at amazing prices!</small>
+                </h4>
+
+
+                <!-- END section-title -->
+                <!-- BEGIN category-container -->
+                <div class="category-container">
+                    <!-- BEGIN category-sidebar -->
+                    <div class="category-sidebar">
+                        <ul class="category-list">
+                            <li class="list-header">Top Categories</li>
+
+                            {% for data in categories %}
+                            <li class="category" id="{{data.id}}"><a href="#">{{ data.name }}</a></li>
+                            {% endfor %}
+
+                        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+                                    <script>
+
+                               $( ".category" ).on( "click", function(ev) {
+                                   ev.preventDefault();
+
+                                                  var id = $(this).attr("id");
+
+                                                  $.ajax({
+                                      type: "GET",
+                                      url: `getCategory1/${id}/`,
+                                      data: {
+                                          id:id,
+
+                                      },
+                                      complete: function(data){
+                                         console.log(data.responseText);
+                                         {#console.log(data.innerHTML);#}
+                                         $('#idid').html(data.responseText);
+                                      }
+                                    });
+                                });
+                            </script>
+
+
+                        </ul>
+                    </div>
+                    <!-- END category-sidebar -->
+                    <!-- BEGIN category-detail -->
+                    <div class="category-detail">
+                        <!-- BEGIN category-item -->
+                        <a href="#" class="category-item full">
+                            <div class="item">
+                                <div class="item-cover">
+                                    <img src="{% static 'assets/img/huawei-mediapad.jpg' %}" alt="" />
+                                </div>
+                                <div class="item-info bottom">
+                                    <h4 class="item-title">Huawei MediaPad T1 7.0</h4>
+                                    <p class="item-desc">Vibrant colors. Beautifully displayed</p>
+                                    <div class="item-price">$299.00</div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- END category-item -->
+                        <!-- BEGIN category-item -->
+                        <div class="category-item list">
+                            <!-- BEGIN item-row -->
+                            <div class="item-row"  id = "idid">
+                                <!-- BEGIN item -->
+
+                                {% for tablet in tablet_products %}
+
+                                <div class="item item-thumbnail">
+                                    <a href="{% url 'product_detail' tablet.id %}" class="item-image">
+                                        <img src="{{tablet.image.url}}" alt="" />
+                                        <div class="discount">{{tablet.off}}% OFF</div>
+                                    </a>
+                                    <div class="item-info">
+                                        <h4 class="item-title">
+                                            <a href="{% url 'product_detail' tablet.id %}">{{tablet.name}}<br />32GB</a>
+                                        </h4>
+                                        <p class="item-desc">{{tablet.discription}}.</p>
+                                        <div class="item-price">${{tablet.price}}</div>
+                                        <div class="item-discount-price">${{tablet.discount}}</div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                                </div>
+                                <!-- END item -->
+                            </div>
+                            <!-- END item-row -->
+                        </div>
+                        <!-- END category-item -->
+                    </div>
+                    <!-- END category-detail -->
+                </div>
+                <!-- END category-container -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #tablet-list -->
+
+        <!-- BEGIN #policy -->
+        <div id="policy" class="section-container p-t-30 p-b-30">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN row -->
+                <div class="row">
+                    <!-- BEGIN col-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <!-- BEGIN policy -->
+                        <div class="policy">
+                            <div class="policy-icon"><i class="fa fa-truck"></i></div>
+                            <div class="policy-info">
+                                <h4>Free Delivery Over $100</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                        <!-- END policy -->
+                    </div>
+                    <!-- END col-4 -->
+                    <!-- BEGIN col-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <!-- BEGIN policy -->
+                        <div class="policy">
+                            <div class="policy-icon"><i class="fa fa-shield"></i></div>
+                            <div class="policy-info">
+                                <h4>1 Year Warranty For Phones</h4>
+                                <p>Cras laoreet urna id dui malesuada gravida. <br />Duis a lobortis dui.</p>
+                            </div>
+                        </div>
+                        <!-- END policy -->
+                    </div>
+                    <!-- END col-4 -->
+                    <!-- BEGIN col-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <!-- BEGIN policy -->
+                        <div class="policy">
+                            <div class="policy-icon"><i class="fa fa-user-md"></i></div>
+                            <div class="policy-info">
+                                <h4>6 Month Warranty For Accessories</h4>
+                                <p>Fusce ut euismod orci. Morbi auctor, sapien non eleifend iaculis.</p>
+                            </div>
+                        </div>
+                        <!-- END policy -->
+                    </div>
+                    <!-- END col-4 -->
+                </div>
+                <!-- END row -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #policy -->
+
+        <!-- BEGIN #subscribe -->
+        <div id="subscribe" class="section-container bg-silver p-t-30 p-b-30">
+            <!-- BEGIN container -->
+            <div class="container">
+                <!-- BEGIN row -->
+                <div class="row">
+                    <!-- BEGIN col-6 -->
+                    <div class="col-md-6 col-sm-6">
+                        <!-- BEGIN subscription -->
+                        <div class="subscription">
+                            <div class="subscription-intro">
+                                <h4> LET'S STAY IN TOUCH</h4>
+                                <p>Get updates on sales specials and more</p>
+                            </div>
+                            <div class="subscription-form">
+                                <form name="subscription_form" action="index.html" method="POST">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="email" placeholder="Enter Email Address" />
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-inverse"><i class="fa fa-angle-right"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- END subscription -->
+                    </div>
+                    <!-- END col-6 -->
+                    <!-- BEGIN col-6 -->
+                    <div class="col-md-6 col-sm-6">
+                        <!-- BEGIN social -->
+                        <div class="social">
+                            <div class="social-intro">
+                                <h4>FOLLOW US</h4>
+                                <p>We want to hear from you!</p>
+                            </div>
+                            <div class="social-list">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                        </div>
+                        <!-- END social -->
+                    </div>
+                    <!-- END col-6 -->
+                </div>
+                <!-- END row -->
+            </div>
+            <!-- END container -->
+        </div>
+        <!-- END #subscribe -->
+
+
+{% endblock %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
